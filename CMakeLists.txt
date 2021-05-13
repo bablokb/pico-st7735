@@ -27,8 +27,17 @@ add_compile_definitions(SPI_TX=15)
 
 add_compile_definitions(TFT_ENABLE_RESET TFT_ENABLE_BLACK TFT_ENABLE_TEXT
                         TFT_ENABLE_SHAPES TFT_ENABLE_ROTATE)
-add_compile_definitions(ENABLE_TESTR ENABLE_TEST1 ENABLE_TEST1A
-                        ENABLE_TEST2 ENABLE_TEST3 ENABLE_TEST4)
+
+# ENABLE_FONTS: set on command-line or select from
+# VSCode-menu (see .vscode/cmake-variants.json)                        
+if(ENABLE_FONTS)
+  message(">>> Font test")
+  add_compile_definitions(TFT_ENABLE_FONTS ENABLE_TEST9)
+else()
+  message(">>> Normal test")
+  add_compile_definitions(ENABLE_TESTR ENABLE_TEST1 ENABLE_TEST1A
+                           ENABLE_TEST2 ENABLE_TEST3 ENABLE_TEST4)
+endif()
 
 # add preprocessor-constant DEBUG for Debug-builds
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
