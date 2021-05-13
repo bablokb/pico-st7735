@@ -497,6 +497,11 @@ void fillTriangle(int16_t x0, int16_t y0, int16_t x1, int16_t y1, int16_t x2, in
 #endif
 
 #if defined(TFT_ENABLE_TEXT)
+
+void setTextWrap(bool w){
+  _wrap = w;
+}
+
 // Draw a single text character to screen
 #if !defined TFT_ENABLE_FONTS
 void drawChar(uint8_t x, uint8_t y, uint8_t c, uint16_t color, uint16_t bg,  uint8_t size){
@@ -521,11 +526,6 @@ void drawChar(uint8_t x, uint8_t y, uint8_t c, uint16_t color, uint16_t bg,  uin
     }
   }
 }
-#endif
-
-void setTextWrap(bool w){
-  _wrap = w;
-}
 
 // Draw text character array to screen
 void drawText(uint8_t x, uint8_t y, const char *_text, uint16_t color, uint16_t bg, uint8_t size) {
@@ -549,6 +549,7 @@ void drawText(uint8_t x, uint8_t y, const char *_text, uint16_t color, uint16_t 
     }
   }
 }
+#endif
 #endif
 
 void invertDisplay(bool i) {
@@ -731,6 +732,39 @@ GFXfont *_gfxFont;
 void setFont(const GFXfont *f) {
   _gfxFont = (GFXfont *)f;
 }
+
+// Draw text character array to screen
+void drawText(uint8_t x, uint8_t y, const char *_text,
+                         uint16_t color, uint16_t bg, uint8_t size) {
+  uint8_t cursor_x, cursor_y, first_char, last_char;
+  uint16_t textlen, i;
+
+  cursor_x = x, cursor_y = y;
+  first_char = _gfxFont->first;
+  last_char  = _gfxFont->last;
+  textlen    = strlen(_text);
+
+  for(i = 0; i < textlen; i++){
+    uint8_t c = _text[i];
+    if (c<first_char || c>last_char) {
+      continue;
+    }
+
+    GFXglyph *glyph = &(_gfxFont->glyph[c-first_char]);
+    uint8_t w = glyph->width, h = glyph->height;
+
+    if((w > 0) && (h > 0)) { // bitmap available
+      int16_t xo = glyph->xOffset;
+      if(_wrap && ((cursor_x + size * (xo + w)) > _width)) {
+        cursor_x = 0;
+        cursor_y += (int16_t)size * _gfxFont->yAdvance;
+      }
+      drawChar(cursor_x,cursor_y,c,color,bg,size);
+    }
+    cursor_x += glyph->xAdvance * (int16_t)size;
+  }
+}
+
 void drawChar(uint8_t x, uint8_t y, uint8_t c, uint16_t color,
               uint16_t bg,  uint8_t size) {
   c -= (uint8_t) (_gfxFont->first);
