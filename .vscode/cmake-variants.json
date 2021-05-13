@@ -12,16 +12,6 @@
         "short": "Release",
         "long": "Includes optimizations but no debug info.",
         "buildType": "Release"
-      },
-      "MinRelSize": {
-        "short": "MinRelSize",
-        "long": "Optimizes for size. No debug info.",
-        "buildType": "MinRelSize"
-      },
-      "RelWithDebInfo": {
-        "short": "RelWithDebInfo",
-        "long": "Optimizes for speed but also includes debug info.",
-        "buildType": "RelWithDebInfo"
       }
     }
   },
@@ -34,13 +24,13 @@
         "long": "test with standard font",
         "settings": {
           "ENABLE_FONTS": "false"
-        },
-        "yes": {
-          "short": "glyph-fonts",
-          "long": "test with glyph-fonts",
-          "settings": {
-            "ENABLE_FONTS": "true"
-          }
+        }
+      },
+      "yes": {
+        "short": "glyph-fonts",
+        "long": "test with glyph-fonts",
+        "settings": {
+          "ENABLE_FONTS": "true"
         }
       }
     }
