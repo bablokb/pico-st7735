@@ -52,7 +52,7 @@ The ST7735-library uses a small standard-font, which is impossible to read
 unless you are really near the screen. You can scale the font, but the
 result is ugly.
 
-The solution to the problem are glyph-fonts. The take up a lot of space,
+The solution to the problem are glyph-fonts. They take up a lot of space,
 too much for most MCUs, but since the Pico has a lot of flash, this is
 no problem here.
 
