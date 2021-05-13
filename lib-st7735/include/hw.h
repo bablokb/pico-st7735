@@ -71,10 +71,10 @@
                                    gpio_put(PIN_TFT_DC,1); \
                                    asm volatile("nop \n nop \n nop")
 
-#define spi_rst_low()              asm volatile("nop \n nop \n nop"); \
+#define tft_rst_low()              asm volatile("nop \n nop \n nop"); \
                                    gpio_put(PIN_TFT_RST,0); \
                                    asm volatile("nop \n nop \n nop")
-#define spi_rst_high()             asm volatile("nop \n nop \n nop"); \
+#define tft_rst_high()             asm volatile("nop \n nop \n nop"); \
                                    gpio_put(PIN_TFT_RST,1); \
                                    asm volatile("nop \n nop \n nop")
 // ----------------------------------------------------------------
