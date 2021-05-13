@@ -25,7 +25,7 @@ add_compile_definitions(SPI_RX=12)
 add_compile_definitions(SPI_SCK=14)
 add_compile_definitions(SPI_TX=15)
 
-add_compile_definitions(TFT_ENABLE_BLACK TFT_ENABLE_TEXT
+add_compile_definitions(TFT_ENABLE_RESET TFT_ENABLE_BLACK TFT_ENABLE_TEXT
                         TFT_ENABLE_SHAPES TFT_ENABLE_ROTATE)
 add_compile_definitions(ENABLE_TESTR ENABLE_TEST1 ENABLE_TEST1A
                         ENABLE_TEST2 ENABLE_TEST3 ENABLE_TEST4)
