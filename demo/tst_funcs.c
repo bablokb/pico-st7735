@@ -157,18 +157,18 @@ void Test8() {
 
 #if defined(ENABLE_TEST9)
 void Test9(void) {
-  const char *txt = "hello fonts";
+  const char *txt = "fonts!";
   setFont(&FreeMonoOblique12pt7b);
-  uint8_t y = 5;
-  drawText(10, y, txt, ST7735_WHITE, ST7735_BLACK, 1); y += 20;
-  drawText(10, y, txt,  ST7735_BLUE, ST7735_BLACK, 1); y += 20;
-  drawText(10, y, txt, ST7735_RED, ST7735_BLACK, 1); y += 20;
-  drawText(10, y, txt, ST7735_GREEN, ST7735_BLACK, 1); y += 20;
-  drawText(10, y, txt, ST7735_CYAN, ST7735_BLACK, 1);  y += 20;   
-  drawText(10, y, txt, ST7735_MAGENTA, ST7735_BLACK, 1); y += 20;
-  drawText(10, y, txt, ST7735_YELLOW, ST7735_BLACK, 1); y += 20;
-  drawText(10, y, txt, ST7735_WHITE, ST7735_BLACK, 1);
-  TEST_DELAY2();
+  setRotation(0);
+  uint8_t y = FreeMonoOblique12pt7b.yAdvance;
+  uint8_t lsize = y;
+  drawText(10, y, txt, ST7735_WHITE, ST7735_BLACK, 1); y += lsize;
+  drawText(10, y, txt,  ST7735_BLUE, ST7735_BLACK, 1); y += lsize;
+  drawText(10, y, txt, ST7735_RED, ST7735_BLACK, 1); y += lsize;
+  drawText(10, y, txt, ST7735_GREEN, ST7735_BLACK, 1); y += lsize;
+  drawText(10, y, txt, ST7735_CYAN, ST7735_BLACK, 1);  y += lsize;   
+  drawText(10, y, txt, ST7735_MAGENTA, ST7735_BLACK, 1); y += lsize;
+  TEST_DELAY5();
   fillScreen(ST7735_BLACK);
 }
 #endif
