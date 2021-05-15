@@ -9,9 +9,6 @@
 // https://github.com/bablokb/pic-st7735
 // --------------------------------------------------------------------------
 
-#if defined _PTC
-  #include "picconfig.h"
-#endif
 #include "pico/stdlib.h"
 #include "tst_funcs.h"
 #include "ST7735_TFT.h"
@@ -19,12 +16,6 @@
 #if defined ENABLE_TEST9
   #include "FreeMonoOblique12pt7b.h"
 #endif
-
-void delay_s(uint8_t count) {
-  for (int i=0; i<4*count; ++i) {
-    sleep_ms(250);
-  }
-}
 
 #if defined(ENABLE_TEST1)
 void Test1(void) {

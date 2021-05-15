@@ -44,11 +44,9 @@
   #endif
 #endif
 
-#define TEST_DELAY1() delay_s(1)
-#define TEST_DELAY2() delay_s(2)
-#define TEST_DELAY5() delay_s(5)
-
-void delay_s(uint8_t count);
+#define TEST_DELAY1() sleep_ms(1000)
+#define TEST_DELAY2() sleep_ms(2000)
+#define TEST_DELAY5() sleep_ms(5000)
 
 #if defined(ENABLE_TEST1)
 void Test1(void); // Hello world fonts + Colors text
