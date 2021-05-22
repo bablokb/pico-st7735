@@ -63,3 +63,16 @@ the original Adafruit project <https://github.com/adafruit/Adafruit-GFX-Library/
 To use these fonts, you need to `#define TFT_ENABLE_FONTS` and set the
 font before drawing text. See `Test9()` in the demo-program for an
 example.
+
+
+Font-Subsets
+------------
+
+Very often, a complete font is not necessary. The project
+<https://github.com/bablokb/pic-st7735> provides a
+utility to create a subset of the font only with the necessary characters
+in the subdirectory `fc_subset`. You should read complete instructions in
+the above mentioned Adafruit-repo (subdirectory `fontconvert`).
+
+Handling of subsets needs some care, see `Test9A()` for an example. Since
+the Pico has a lot of memory, it is usually better to use the complete fonts.
