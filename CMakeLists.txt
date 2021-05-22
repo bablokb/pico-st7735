@@ -29,10 +29,10 @@ add_compile_definitions(TFT_ENABLE_RESET TFT_ENABLE_BLACK TFT_ENABLE_TEXT
                         TFT_ENABLE_SHAPES TFT_ENABLE_ROTATE)
 
 # ENABLE_FONTS: set on command-line or select from
-# VSCode-menu (see .vscode/cmake-variants.json)                        
+# VSCode-menu (see .vscode/cmake-variants.json)
 if(ENABLE_FONTS)
   message(">>> Font test")
-  add_compile_definitions(TFT_ENABLE_FONTS ENABLE_TEST9)
+  add_compile_definitions(TFT_ENABLE_FONTS ENABLE_TEST9 ENABLE_TEST9A)
 else()
   message(">>> Normal test")
   add_compile_definitions(ENABLE_TESTR ENABLE_TEST1 ENABLE_TEST1A
