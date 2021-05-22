@@ -23,10 +23,10 @@
 #if defined TFT_ENABLE_FONTS
   #if !defined TFT_ENABLE_TEXT
     #define TFT_ENABLE_TEXT
-  #endif  
+  #endif
   #if !defined PROGMEM
     #define PROGMEM
-  #endif  
+  #endif
 #endif
 
 #if defined TFT_ENABLE_ALL
@@ -105,9 +105,9 @@ extern uint8_t tft_width, tft_height;
 #define LCD_ASCII_OFFSET 0x20 //0x20, ASCII character for Space, The font table starts with this character
 
 
-// ******** FUNCTION  PROTOTYPES ************ 
+// ******** FUNCTION  PROTOTYPES ************
 
-// SPI 
+// SPI
 void write_command(uint8_t );
 void write_data(uint8_t );
 
@@ -143,35 +143,35 @@ void Rcmd3();
 
 // Misc + Screen related
 void setAddrWindow(uint8_t , uint8_t , uint8_t , uint8_t );
-void fillScreen(uint16_t color); 
+void fillScreen(uint16_t color);
 void drawFastVLine(uint8_t x, uint8_t y, uint8_t h, uint16_t color);
 void drawFastHLine(uint8_t x, uint8_t y, uint8_t w, uint16_t color);
 void drawPixel(uint8_t , uint8_t , uint16_t );
 void fillRectangle(uint8_t , uint8_t , uint8_t , uint8_t , uint16_t );
 void fillRect(uint8_t x, uint8_t y, uint8_t w, uint8_t h, uint16_t color);
 
-void invertDisplay(bool i); 
+void invertDisplay(bool i);
 void NormalDisplay(void);
 void pushColor(uint16_t color);
 
-//Scroll 
+//Scroll
 #if defined TFT_ENABLE_SCROLL
 void setScrollDefinition(uint8_t top_fix_height, uint8_t bottom_fix_height, bool _scroll_direction);
-void VerticalScroll(uint8_t _vsp); 
+void VerticalScroll(uint8_t _vsp);
 #endif
 
 // Shapes
 #if defined TFT_ENABLE_SHAPES
 void drawLine(int16_t x0, int16_t y0, int16_t x1, int16_t y1, uint16_t color);
 void drawRectWH(uint8_t x, uint8_t y, uint8_t w, uint8_t h, uint16_t color);
-void drawRoundRect(uint8_t x, uint8_t y, uint8_t w, uint8_t h, uint8_t r, uint16_t color); 
+void drawRoundRect(uint8_t x, uint8_t y, uint8_t w, uint8_t h, uint8_t r, uint16_t color);
 void fillRoundRect(uint8_t x, uint8_t y, uint8_t w, uint8_t h, uint8_t r, uint16_t color);
-void drawCircle(int16_t x0, int16_t y0, int16_t r, uint16_t color); 
-void drawCircleHelper(int16_t x0, int16_t y0, int16_t r, uint8_t cornername, uint16_t color); 
-void fillCircleHelper(int16_t x0, int16_t y0, int16_t r, uint8_t cornername, int16_t delta, uint16_t color); 
-void fillCircle(int16_t x0, int16_t y0, int16_t r, uint16_t color); 
-void drawTriangle(int16_t x0, int16_t y0, int16_t x1, int16_t y1, int16_t x2, int16_t y2, uint16_t color); 
-void fillTriangle(int16_t x0, int16_t y0, int16_t x1, int16_t y1, int16_t x2, int16_t y2, uint16_t color); 
+void drawCircle(int16_t x0, int16_t y0, int16_t r, uint16_t color);
+void drawCircleHelper(int16_t x0, int16_t y0, int16_t r, uint8_t cornername, uint16_t color);
+void fillCircleHelper(int16_t x0, int16_t y0, int16_t r, uint8_t cornername, int16_t delta, uint16_t color);
+void fillCircle(int16_t x0, int16_t y0, int16_t r, uint16_t color);
+void drawTriangle(int16_t x0, int16_t y0, int16_t x1, int16_t y1, int16_t x2, int16_t y2, uint16_t color);
+void fillTriangle(int16_t x0, int16_t y0, int16_t x1, int16_t y1, int16_t x2, int16_t y2, uint16_t color);
 #endif
 
 // Text
@@ -198,12 +198,15 @@ typedef struct {
 
 /// Data stored for FONT AS A WHOLE
 typedef struct {
-  uint8_t *bitmap;  ///< Glyph bitmaps, concatenated
-  GFXglyph *glyph;  ///< Glyph array
-  uint16_t first;   ///< ASCII extents (first char)
-  uint16_t last;    ///< ASCII extents (last char)
-  uint8_t yAdvance; ///< Newline distance (y axis)
+  uint8_t *bitmap;     ///< Glyph bitmaps, concatenated
+  GFXglyph *glyph;     ///< Glyph array
+  uint16_t first;      ///< ASCII extents (first char)
+  uint16_t last;       ///< ASCII extents (last char)
+  uint8_t yAdvance;    ///< Newline distance (y axis)
+  const char *subset;  ///< subset of chars in the font
 } GFXfont;
+
+extern GFXfont *_gfxFont;
 void setFont(const GFXfont *f);
 #endif
 
