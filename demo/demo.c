@@ -88,6 +88,9 @@ int main() {
 #if defined(ENABLE_TEST9)
   Test9();
 #endif
+#if defined(ENABLE_TEST9A)
+  Test9A();
+#endif
 
 #if defined(TFT_ENABLE_TEXT)
   #if defined(ENABLE_TESTR) && defined(TFT_ENABLE_ROTATE)

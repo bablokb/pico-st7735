@@ -42,6 +42,9 @@
   #if ! defined(ENABLE_TEST9)
     #define ENABLE_TEST9
   #endif
+  #if ! defined(ENABLE_TEST9A)
+    #define ENABLE_TEST9A
+  #endif
 #endif
 
 #define TEST_DELAY1() sleep_ms(1000)
@@ -77,5 +80,8 @@ void Test8(void); // shapes media buttons graphic + invert display
 #endif
 #if defined(ENABLE_TEST9)
 void Test9(void); // glyph-fonts
+#endif
+#if defined(ENABLE_TEST9A)
+void Test9A(void); // glyph-fonts (subset)
 #endif
 #endif

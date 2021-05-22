@@ -16,33 +16,36 @@
 #if defined ENABLE_TEST9
   #include "FreeMonoOblique12pt7b.h"
 #endif
+#if defined ENABLE_TEST9A
+  #include "FreeMonoOblique12pt_sub.h"
+#endif
 
 #if defined(ENABLE_TEST1)
 void Test1(void) {
-  const char *txt = " hello world";    
+  const char *txt = " hello world";
   drawText(0, 5, txt, ST7735_WHITE, ST7735_BLACK, 1);
   drawText(0, 15, txt,  ST7735_BLUE, ST7735_BLACK, 1);
   drawText(0, 25, txt, ST7735_RED, ST7735_BLACK, 1);
-  drawText(0, 35, txt, ST7735_GREEN, ST7735_BLACK, 1);       
-  drawText(0, 45, txt, ST7735_CYAN, ST7735_BLACK, 1);       
-  drawText(0, 55, txt, ST7735_MAGENTA, ST7735_BLACK, 1);       
-  drawText(0, 65, txt, ST7735_YELLOW, ST7735_BLACK, 1);        
-  drawText(0, 75, txt, ST7735_WHITE, ST7735_BLACK, 1);       
+  drawText(0, 35, txt, ST7735_GREEN, ST7735_BLACK, 1);
+  drawText(0, 45, txt, ST7735_CYAN, ST7735_BLACK, 1);
+  drawText(0, 55, txt, ST7735_MAGENTA, ST7735_BLACK, 1);
+  drawText(0, 65, txt, ST7735_YELLOW, ST7735_BLACK, 1);
+  drawText(0, 75, txt, ST7735_WHITE, ST7735_BLACK, 1);
   TEST_DELAY2();
   fillScreen(ST7735_BLACK);
 }
 #endif
 
 #if defined(ENABLE_TEST1A)
-void Test1A(void) {   
+void Test1A(void) {
   drawText(0, 5, " !#$%&'()*+,-.", ST7735_WHITE, ST7735_BLACK, 1);
   drawText(0, 15, "0123456789",  ST7735_BLUE, ST7735_BLACK, 1);
   drawText(0, 25, "abcdefghijklmn", ST7735_RED, ST7735_BLACK, 1);
-  drawText(0, 35, "ABCDEGHIJKLMN", ST7735_GREEN, ST7735_BLACK, 1);       
-  drawText(0, 45, "opqrstuvwxyz", ST7735_CYAN, ST7735_BLACK, 1);       
-  drawText(0, 55, "OPQRSTUVWYXZ", ST7735_MAGENTA, ST7735_BLACK, 1);       
-  drawText(0, 65, ";:=,.?@", ST7735_YELLOW, ST7735_BLACK, 1);        
-  drawText(0, 75, "[]/", ST7735_BLACK, ST7735_WHITE, 1);       
+  drawText(0, 35, "ABCDEGHIJKLMN", ST7735_GREEN, ST7735_BLACK, 1);
+  drawText(0, 45, "opqrstuvwxyz", ST7735_CYAN, ST7735_BLACK, 1);
+  drawText(0, 55, "OPQRSTUVWYXZ", ST7735_MAGENTA, ST7735_BLACK, 1);
+  drawText(0, 65, ";:=,.?@", ST7735_YELLOW, ST7735_BLACK, 1);
+  drawText(0, 75, "[]/", ST7735_BLACK, ST7735_WHITE, 1);
   TEST_DELAY5();
   fillScreen(ST7735_BLACK);
 }
@@ -61,22 +64,22 @@ void Test2(void) {
 #endif
 
 #if defined(ENABLE_TEST3)
-void Test3(void) { //pixels and LINES 
+void Test3(void) { //pixels and LINES
   drawPixel(5, 5, ST7735_RED);
   drawLine(10, 10, 30, 30, ST7735_RED);
   drawFastVLine(40, 40, 40, ST7735_GREEN);
   drawFastHLine(60, 60, 40, ST7735_YELLOW);
   TEST_DELAY2();
   fillScreen(ST7735_BLACK);
-}    
+}
 #endif
 
 #if defined(ENABLE_TEST4)
 void Test4(void) {
   drawRectWH(5, 5, 20, 20, ST7735_RED);
   fillRectangle(25 , 25 , 40 , 40 ,  ST7735_YELLOW);
-  fillRect(80, 5, 20, 20, ST7735_GREEN); 
-  drawRoundRect(5, 80, 20, 20, 5, ST7735_CYAN); 
+  fillRect(80, 5, 20, 20, ST7735_GREEN);
+  drawRoundRect(5, 80, 20, 20, 5, ST7735_CYAN);
   fillRoundRect(50, 100, 25, 25, 10, ST7735_WHITE);
   TEST_DELAY2();
   fillScreen(ST7735_BLACK);
@@ -85,15 +88,15 @@ void Test4(void) {
 
 #if defined(ENABLE_TEST5)
 void Test5(void) {
-  drawCircle(40, 40, 20,  ST7735_GREEN); 
-  fillCircle(80, 20, 15,  ST7735_YELLOW); 
+  drawCircle(40, 40, 20,  ST7735_GREEN);
+  fillCircle(80, 20, 15,  ST7735_YELLOW);
 }
 #endif
 
 #if defined(ENABLE_TEST6)
 void Test6(void) {
-  drawTriangle(5, 80, 50, 80, 15, 100, ST7735_CYAN); 
-  fillTriangle(55, 80, 100, 60, 75, 120, ST7735_RED); 
+  drawTriangle(5, 80, 50, 80, 15, 100, ST7735_CYAN);
+  fillTriangle(55, 80, 100, 60, 75, 120, ST7735_RED);
   TEST_DELAY2();
   fillScreen(ST7735_BLACK);
 }
@@ -115,22 +118,22 @@ void Test7(void) {
       VerticalScroll(pos + TOP_FIXED);
       pos++;
       // check pos if necessary: must be < tft_height - TOP_FIXED - BOTTOM_FIXED
-      delay_ms(100);  
+      delay_ms(100);
     }
     TEST_DELAY2();
   }
-  NormalDisplay(); 
+  NormalDisplay();
   fillScreen(ST7735_BLACK);
 }
 #endif
 
 #if defined(ENABLE_TEST8)
 void Test8() {
-  //Draw play button 
+  //Draw play button
   fillRoundRect(25, 10, 78, 60, 8, ST7735_WHITE);
   fillTriangle(42, 20, 42, 60, 90, 40, ST7735_RED);
-  fillCircle(40, 100, 15,  ST7735_CYAN); 
-  fillCircle(80, 100, 15,  ST7735_GREEN); 
+  fillCircle(40, 100, 15,  ST7735_CYAN);
+  fillCircle(80, 100, 15,  ST7735_GREEN);
   TEST_DELAY5();
   // change play color
   fillTriangle(42, 20, 42, 60, 90, 40, ST7735_BLUE);
@@ -157,8 +160,46 @@ void Test9(void) {
   drawText(10, y, txt,  ST7735_BLUE, ST7735_BLACK, 1); y += lsize;
   drawText(10, y, txt, ST7735_RED, ST7735_BLACK, 1); y += lsize;
   drawText(10, y, txt, ST7735_GREEN, ST7735_BLACK, 1); y += lsize;
-  drawText(10, y, txt, ST7735_CYAN, ST7735_BLACK, 1);  y += lsize;   
+  drawText(10, y, txt, ST7735_CYAN, ST7735_BLACK, 1);  y += lsize;
   drawText(10, y, txt, ST7735_MAGENTA, ST7735_BLACK, 1); y += lsize;
+  TEST_DELAY5();
+  fillScreen(ST7735_BLACK);
+}
+#endif
+
+#if defined(ENABLE_TEST9A)
+
+char *txt_conv(const char *txt, char *buf, const uint8_t n) {
+  char c;
+  for (int i=0;i<strlen(txt);++i) {
+    c = txt[i];
+    for (int j=0;j<strlen(_gfxFont->subset);++j) {
+      if (_gfxFont->subset[j] == c) {
+        buf[i] = j+1;
+        break;
+      }
+    }
+  }
+  buf[strlen(txt)] = 0;
+  return buf;
+}
+
+#define BUF_LEN 24
+
+void Test9A(void) {
+  char buf[BUF_LEN];
+  setFont(&FreeMonoOblique12pt_sub);
+  setRotation(0);
+
+  fillScreen(ST7735_BLUE);
+  fillRoundRect(4,  4,120,48,10,ST7735_WHITE);
+  fillRoundRect(4, 56,120,48,10,ST7735_WHITE); //  4 + 48 + 4
+  fillRoundRect(4,108,120,48,10,ST7735_WHITE);
+
+  drawText(10, 36,txt_conv("+22.3C",buf,BUF_LEN),ST7735_BLACK,ST7735_WHITE,1);
+  drawText(10, 88,txt_conv("1012hPa",buf,BUF_LEN),ST7735_BLACK,ST7735_WHITE,1);
+  drawText(10,140,txt_conv("55%",buf,BUF_LEN),ST7735_BLACK,ST7735_WHITE,1);
+  TEST_DELAY5();
   TEST_DELAY5();
   fillScreen(ST7735_BLACK);
 }
