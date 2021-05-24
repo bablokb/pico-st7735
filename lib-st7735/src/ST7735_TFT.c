@@ -36,18 +36,18 @@ uint8_t tft_width = 128, tft_height = 160;
 
 // Write an SPI command
 void write_command(uint8_t cmd_){
-  tft_dc_low() ;
-  spi_cs_low();
+  tft_dc_low();
+  tft_cs_low();
   spiwrite(cmd_);
-  spi_cs_high();
+  tft_cs_high();
 }
 
 // Write SPI data
 void write_data(uint8_t data_){
   tft_dc_high();
-  spi_cs_low();
+  tft_cs_low();
   spiwrite(data_);
-  spi_cs_high();
+  tft_cs_high();
 }
 
 #if defined TFT_ENABLE_GENERIC
@@ -227,14 +227,14 @@ void fillRectangle(uint8_t x, uint8_t y, uint8_t w, uint8_t h, uint16_t color){
   setAddrWindow(x, y, x+w-1, y+h-1);
   hi = color >> 8; lo = color;
   tft_dc_high();
-  spi_cs_low();
+  tft_cs_low();
   for(y=h; y>0; y--) {
     for(x = w; x > 0; x--) {
       spiwrite(hi);
       spiwrite(lo);
     }
   }
-  spi_cs_high() ;
+  tft_cs_high() ;
 }
 
 void fillScreen(uint16_t color) {
@@ -250,12 +250,12 @@ void drawFastHLine(uint8_t x, uint8_t y, uint8_t w, uint16_t color){
   hi = color >> 8; lo = color;
   setAddrWindow(x, y, x + w - 1, y);
   tft_dc_high();
-  spi_cs_low();
+  tft_cs_low();
   while (w--) {
     spiwrite(hi);
     spiwrite(lo);
   }
-  spi_cs_high() ;
+  tft_cs_high() ;
 }
 
 void drawFastVLine(uint8_t x, uint8_t y, uint8_t h, uint16_t color){
@@ -267,12 +267,12 @@ void drawFastVLine(uint8_t x, uint8_t y, uint8_t h, uint16_t color){
   hi = color >> 8; lo = color;
   setAddrWindow(x, y, x, y + h - 1);
   tft_dc_high();
-  spi_cs_low();
+  tft_cs_low();
   while (h--) {
     spiwrite(hi);
     spiwrite(lo);
   }
-  spi_cs_high() ;
+  tft_cs_high() ;
 }
 
 void fillRect(uint8_t x, uint8_t y, uint8_t w, uint8_t h, uint16_t color) {
@@ -502,8 +502,8 @@ void setTextWrap(bool w){
   _wrap = w;
 }
 
-// Draw a single text character to screen
 #if !defined TFT_ENABLE_FONTS
+// Draw a single text character to screen
 void drawChar(uint8_t x, uint8_t y, uint8_t c, uint16_t color, uint16_t bg,  uint8_t size){
   int8_t i, j;
   if((x >= _width) || (y >= _height))
@@ -616,10 +616,10 @@ void pushColor(uint16_t color){
   uint8_t hi, lo;
   hi = color >> 8; lo = color;
   tft_dc_high();
-  spi_cs_low();
+  tft_cs_low();
   spiwrite(hi);
   spiwrite(lo);
-  spi_cs_high() ;
+  tft_cs_high() ;
 }
 
 
@@ -629,7 +629,7 @@ void TFT_GreenTab_Initialize(){
 #if defined TFT_ENABLE_RESET
   TFT_ResetPIN();
 #endif
-  tft_dc_low() ;
+  tft_dc_low();
   Rcmd1();
   Rcmd2green();
   Rcmd3();
@@ -644,7 +644,7 @@ void TFT_GreenTab_Initialize(){
 void TFT_ResetPIN() {
   tft_rst_high() ;
   __delay_ms(10);
-  tft_rst_low() ;
+  tft_rst_low();
   __delay_ms(10);
   tft_rst_high() ;
   __delay_ms(10);
@@ -671,7 +671,7 @@ void TFT_BlackTab_Initialize(){
 #if defined TFT_ENABLE_RESET
   TFT_ResetPIN();
 #endif
-  tft_dc_low() ;
+  tft_dc_low();
   Rcmd1();
   Rcmd2red();
   Rcmd3();
@@ -687,7 +687,7 @@ void TFT_ST7735B_Initialize(){
 #if defined TFT_ENABLE_RESET
   TFT_ResetPIN();
 #endif
-  tft_dc_low() ;
+  tft_dc_low();
   Bcmd();
   _tft_type = 2;
 }

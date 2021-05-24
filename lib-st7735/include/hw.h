@@ -57,10 +57,10 @@
 
 #define spiwrite(data)             spi_write_blocking(SPI_TFT_PORT,&data,1)
 
-#define spi_cs_low()               asm volatile("nop \n nop \n nop"); \
+#define tft_cs_low()               asm volatile("nop \n nop \n nop"); \
                                    gpio_put(PIN_TFT_CS,0); \
                                    asm volatile("nop \n nop \n nop")
-#define spi_cs_high()              asm volatile("nop \n nop \n nop"); \
+#define tft_cs_high()              asm volatile("nop \n nop \n nop"); \
                                    gpio_put(PIN_TFT_CS,1); \
                                    asm volatile("nop \n nop \n nop")
 
