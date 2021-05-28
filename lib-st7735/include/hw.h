@@ -10,7 +10,7 @@
 // --------------------------------------------------------------------------
 
 #ifndef _HW_H
-#define HW_H
+#define _HW_H
 
 #include "pico/stdlib.h"
 #include "hardware/spi.h"
