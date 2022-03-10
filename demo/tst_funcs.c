@@ -118,7 +118,7 @@ void Test7(void) {
       VerticalScroll(pos + TOP_FIXED);
       pos++;
       // check pos if necessary: must be < tft_height - TOP_FIXED - BOTTOM_FIXED
-      delay_ms(100);
+      sleep_ms(100);
     }
     TEST_DELAY2();
   }
