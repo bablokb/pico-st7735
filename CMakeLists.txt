@@ -22,7 +22,8 @@ set(SPI_TFT_PORT "spi1" CACHE STRING "TFT spi port-name")
 set(SPI_TFT_CS   "9"    CACHE STRING "TFT CS  pin number")
 set(SPI_TFT_DC   "10"   CACHE STRING "TFT DC  pin number")
 set(SPI_TFT_RST  "11"   CACHE STRING "TFT RST pin number")
-set(TFT_OPTIONS TFT_ENABLE_BLACK TFT_ENABLE_RESET TFT_ENABLE_TEXT TFT_ENABLE_SHAPES TFT_ENABLE_ROTATE
+set(TFT_OPTIONS TFT_ENABLE_BLACK TFT_ENABLE_RESET TFT_ENABLE_TEXT TFT_ENABLE_SHAPES
+                TFT_ENABLE_ROTATE TFT_ENABLE_SCROLL
             CACHE STRING "TFT options/functions")
 
 # TFT options/functions. Complete list:
@@ -68,7 +69,8 @@ if(ENABLE_FONTS)
 else()
   message(">>> Normal test")
   add_compile_definitions(ENABLE_TESTR ENABLE_TEST1 ENABLE_TEST1A
-                           ENABLE_TEST2 ENABLE_TEST3 ENABLE_TEST4)
+                           ENABLE_TEST2 ENABLE_TEST3 ENABLE_TEST4
+                           ENABLE_TEST5 ENABLE_TEST6 ENABLE_TEST7)
 endif()
 
 # add preprocessor-constant DEBUG for Debug-builds
