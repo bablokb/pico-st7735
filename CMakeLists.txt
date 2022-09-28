@@ -49,30 +49,6 @@ foreach(opt IN LISTS TFT_OPTIONS)
     add_compile_definitions(${opt})
 endforeach(opt)
 
-#program configuration (TODO: move to separate project)
-
-set(SPI_PORT "spi1" CACHE STRING "spi port-name")
-set(SPI_RX   "12"   CACHE STRING "RX  pin number")
-set(SPI_TX   "15"   CACHE STRING "TX  pin number")
-set(SPI_SCK  "14"   CACHE STRING "SCK pin number")
-
-add_compile_definitions(SPI_PORT=${SPI_PORT})
-add_compile_definitions(SPI_RX=${SPI_RX})
-add_compile_definitions(SPI_TX=${SPI_TX})
-add_compile_definitions(SPI_SCK=${SPI_SCK})
-
-# ENABLE_FONTS: set on command-line or select from
-# VSCode-menu (see .vscode/cmake-variants.json)
-if(ENABLE_FONTS)
-  message(">>> Font test")
-  add_compile_definitions(TFT_ENABLE_FONTS ENABLE_TEST9 ENABLE_TEST9A)
-else()
-  message(">>> Normal test")
-  add_compile_definitions(ENABLE_TESTR ENABLE_TEST1 ENABLE_TEST1A
-                           ENABLE_TEST2 ENABLE_TEST3 ENABLE_TEST4
-                           ENABLE_TEST5 ENABLE_TEST6 ENABLE_TEST7)
-endif()
-
 # add preprocessor-constant DEBUG for Debug-builds
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
   set(CMAKE_VERBOSE_MAKEFILE 1)
@@ -81,4 +57,3 @@ else()
 endif()
 
 add_subdirectory(lib-st7735)
-add_subdirectory(demo)
