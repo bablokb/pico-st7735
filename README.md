@@ -18,8 +18,10 @@ with some added features (`TFT_ENABLE_*`-defines, rotation) and some modificatio
 The code was developed for PIC MCUs, but porting it to the Pico was
 straightforward.
 
-The library-code is in directory `lib-st7735`, a demo and test-program
-in directory `demo`. You can build, run and debug as you do with other
+The library-code is in directory `lib-st7735`. A demo and test-program
+is in another repository <https://github.com/bablokb/pico-st7735-demo>.
+
+You can build, run and debug as you do with other
 projects from within VS-Code, the editor automagically detects that the
 executable is within a subdirectory instead of within the top-level dir.
 
@@ -72,7 +74,7 @@ Very often, a complete font is not necessary. The project
 <https://github.com/bablokb/pic-st7735> provides a
 utility to create a subset of the font only with the necessary characters
 in the subdirectory `fc_subset`. You should read complete instructions in
-the above mentioned Adafruit-repo (subdirectory `fontconvert`).
+the above mentioned Adafruit-GFX-library repo (subdirectory `fontconvert`).
 
 Handling of subsets needs some care, see `Test9A()` for an example. Since
 the Pico has a lot of memory, it is usually better to use the complete fonts.
