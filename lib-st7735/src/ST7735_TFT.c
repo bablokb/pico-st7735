@@ -703,21 +703,29 @@ void setRotation(uint8_t m) {
   switch (_rotation) {
   case 0:
     madctl = ST7735_MADCTL_MX | ST7735_MADCTL_MY | ST7735_MADCTL_RGB;
+    _height = 160;
+    _width = 128;
     _xstart = _colstart;
     _ystart = _rowstart;
     break;
   case 1:
     madctl = ST7735_MADCTL_MY | ST7735_MADCTL_MV | ST7735_MADCTL_RGB;
+    _width = 160;
+    _height = 128;
     _ystart = _colstart;
     _xstart = _rowstart;
     break;
   case 2:
     madctl = ST7735_MADCTL_RGB;
+    _height = 160;
+    _width = 128;
     _xstart = _colstart;
     _ystart = _rowstart;
     break;
   case 3:
     madctl = ST7735_MADCTL_MX | ST7735_MADCTL_MV | ST7735_MADCTL_RGB;
+    _width = 160;
+    _height = 128;
     _ystart = _colstart;
     _xstart = _rowstart;
     break;
