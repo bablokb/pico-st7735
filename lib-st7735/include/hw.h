@@ -23,18 +23,18 @@
 #endif
 
 // chip-select output pin
-#ifndef PIN_TFT_CS
-  #define PIN_TFT_CS 9
+#ifndef SPI_TFT_CS
+  #define SPI_TFT_CS 9
 #endif
 
 // TFT_DC output pin
-#ifndef PIN_TFT_DC
-  #define PIN_TFT_DC 10
+#ifndef SPI_TFT_DC
+  #define SPI_TFT_DC 10
 #endif
 
 // TFT_RST output pin
-#ifndef PIN_TFT_RST
-  #define PIN_TFT_RST 11
+#ifndef SPI_TFT_RST
+  #define SPI_TFT_RST 11
 #endif
 // ----------------------------------------------------------------
 
@@ -60,24 +60,24 @@ void tft_spi_init();
 #define spiwrite(data)             spi_write_blocking(SPI_TFT_PORT,&data,1)
 
 #define tft_cs_low()               asm volatile("nop \n nop \n nop"); \
-                                   gpio_put(PIN_TFT_CS,0); \
+                                   gpio_put(SPI_TFT_CS,0); \
                                    asm volatile("nop \n nop \n nop")
 #define tft_cs_high()              asm volatile("nop \n nop \n nop"); \
-                                   gpio_put(PIN_TFT_CS,1); \
+                                   gpio_put(SPI_TFT_CS,1); \
                                    asm volatile("nop \n nop \n nop")
 
 #define tft_dc_low()               asm volatile("nop \n nop \n nop"); \
-                                   gpio_put(PIN_TFT_DC,0); \
+                                   gpio_put(SPI_TFT_DC,0); \
                                    asm volatile("nop \n nop \n nop")
 #define tft_dc_high()              asm volatile("nop \n nop \n nop"); \
-                                   gpio_put(PIN_TFT_DC,1); \
+                                   gpio_put(SPI_TFT_DC,1); \
                                    asm volatile("nop \n nop \n nop")
 
 #define tft_rst_low()              asm volatile("nop \n nop \n nop"); \
-                                   gpio_put(PIN_TFT_RST,0); \
+                                   gpio_put(SPI_TFT_RST,0); \
                                    asm volatile("nop \n nop \n nop")
 #define tft_rst_high()             asm volatile("nop \n nop \n nop"); \
-                                   gpio_put(PIN_TFT_RST,1); \
+                                   gpio_put(SPI_TFT_RST,1); \
                                    asm volatile("nop \n nop \n nop")
 // ----------------------------------------------------------------
 
